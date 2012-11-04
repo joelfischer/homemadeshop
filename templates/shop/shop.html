@@ -1,0 +1,43 @@
+{% extends "shop/base.html" %}
+
+{% block title %}
+<title>Homemade Shop</title>
+{% endblock %}
+
+{%block homepage %}
+
+<ul class="breadcrumb" align="left">
+ <li class="active">Home</li>
+ </ul>
+
+<div class="hero-unit" align="left">
+
+ <div class="page-header">
+  <h2>Welcome to Homemade shop</h2>
+ </div>
+
+ <div class="row-fluid">
+ 
+ <div class="span8">
+ {% if latest_item_list %}
+ <h3>Shop</h3>
+  <p></i>Please choose from the following delicious cakes. 
+   <ul class="polaroids">
+    {% for item in latest_item_list %}
+    <li class="reg">
+     <a href="/shop/item/{{ item.id }}/" title="{{item.title}}"><img src="{{MEDIA_URL}}{{item.image}}" alt="{{item.title}}"/></a>
+    </li>	
+    {% endfor %}
+   </ul>
+  </p>
+ {% else %}
+  <p>No items are available.</p>
+ {% endif %}
+ </div>
+
+{% include "shop/news.html" %}
+
+ </div>
+</div>
+
+ {% endblock %}

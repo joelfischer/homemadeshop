@@ -1,0 +1,56 @@
+{% extends "shop/base.html" %}
+
+{% block title %}
+<title>Homemade Shop</title>
+{% endblock %}
+
+{%block item %}
+
+<div class="hero-unit" align="left">
+
+ <div class="page-header">
+  <h2>{{ item.title }}</h2>
+ </div>
+
+ <div class="row-fluid">
+ 
+ <div class="span8">
+ {% if item %}
+ <h3>Details</h3>
+  <p>{{item.description}} <small>Added {{item.pub_date|date:"d M Y"}}</small></p>
+  <div>
+  <ul class="polaroids">
+   <li class="no_hover"><a title="{{item.title}}"><img class="large" src="{{MEDIA_URL}}{{item.image}}" alt= "{{item.title}}"/></a></li>
+   </ul>
+   </div>
+   <p align="right"><strong>&pound; {{item.price}}</strong></p>
+ 
+   <div align="right">
+  
+   <form class="form-horizontal">	
+   <table>
+    <td>
+    <label>Number of items:</label>
+    </td>
+    <td align="center">
+     <button class="btn-mini" onclick="addItemCount();"><i class="icon-plus"></i></button><br>
+     <input type="text" id="amount" value="1" class="span1"><br>
+     <button class="btn-mini" onclick="(subtractItemCount();)"><i class="icon-minus"></i></button>
+    </td>
+    <td>
+     <button class="btn-primary btn-large" onclick="submit"><i class="icon-shopping-cart icon-white"></i> Add to basket</button>
+    </td>
+    </table>
+   </form>
+  </div>
+ {% else %}
+  <p>Details not available.</p>
+ {% endif %}
+ </div>
+
+{% include "shop/news.html" %}
+
+ </div>
+</div>
+
+ {% endblock %}

@@ -1,0 +1,140 @@
+<!doctype html>
+<html>
+<head>
+
+{%block title%}
+{% endblock %}
+
+<!-- <link rel="stylesheet" href="http://wwwdev.mrl.nott.ac.uk/jef/homemade/css/bootstrap.css"> -->
+<link rel="stylesheet" href="{{STATIC_URL}}css/bootstrap.css">
+<style type="text/css">
+ body {
+       background-color: #4C4259;
+  }
+  
+  
+ <!-- POLAROID STYLE IMAGES, CREDIT TO http://www.zurb.com/playground/css3-polaroids --> 
+ ul.polaroids { width: 970px; margin: 0 0 18px -30px; }
+ ul.polaroids li { display: inline; }
+ ul.polaroids a { background: #fff; display: inline; float: left; margin: 0 0 27px 30px; width: auto; padding: 10px 10px 15px; text-align: center; font-family: "Marker Felt", sans-serif; text-decoration: none; color: #333; font-size: 18px; -webkit-box-shadow: 0 3px 6px rgba(0,0,0,.25); -moz-box-shadow: 0 3px 6px rgba(0,0,0,.25); -webkit-transform: rotate(-2deg); -webkit-transition: -webkit-transform .15s linear; -moz-transform: rotate(-2deg); }
+ ul.polaroids img { display: block; width: 190px; margin-bottom: 12px; }
+ ul.polaroids img.large { display: block; width: 400px; margin-bottom: 12px; }
+ ul.polaroids a:after { content: attr(title); }
+ 		
+ ul.polaroids li.reg:nth-child(even) a { -webkit-transform: rotate(2deg);  -moz-transform: rotate(2deg); }
+ ul.polaroids li.reg:nth-child(3n) a { -webkit-transform: none; position: relative; top: -5px;  -moz-transform: none; }
+ ul.polaroids li.reg:nth-child(5n) a { -webkit-transform: rotate(5deg); position: relative; right: 5px;  -moz-transform: rotate(5deg); }
+ ul.polaroids li.reg:nth-child(8n) a { position: relative; right: 5px; top: 8px; }
+ ul.polaroids li.reg:nth-child(11n) a { position: relative; left: -5px; top: 3px; }
+ ul.polaroids li.no_hover:nth-child(even) a { -webkit-transform: rotate(2deg);  -moz-transform: rotate(2deg); }
+ ul.polaroids li.no_hover:nth-child(3n) a { -webkit-transform: none; position: relative; top: -5px;  -moz-transform: none; }
+ ul.polaroids li.no_hover:nth-child(5n) a { -webkit-transform: rotate(5deg); position: relative; right: 5px;  -moz-transform: rotate(5deg); }
+ ul.polaroids li.no_hover:nth-child(8n) a { position: relative; right: 5px; top: 8px; }
+ ul.polaroids li.no_hover:nth-child(11n) a { position: relative; left: -5px; top: 3px; }
+ ul.polaroids li.messy a { margin-top: -375px; margin-left: 160px; -webkit-transform: rotate(-5deg); -moz-transform: rotate(-5deg); }
+ ul.polaroids li.reg a:hover { -webkit-transform: scale(1.25); -moz-transform: scale(1.25); -webkit-box-shadow: 0 3px 6px rgba(0,0,0,.5); -moz-box-shadow: 0 3px 6px rgba(0,0,0,.5); position: relative; z-index: 5; }
+
+</style>
+
+<script type="text/javascript">
+function addItemCount() {
+	
+	var val = document.findElementById('amount').value;
+	val++; 
+	document.findElementById('amount').value = val;
+	
+	
+}
+</script>
+
+</head>
+<body>
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner" 
+      	style="
+      		background-color: #4C4259;
+    		background-image: -moz-linear-gradient(center top , #333333, #4C4259);
+    		background-image: -ms-linear-gradient(top, #333333, #4C4259);
+  			background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#333333), to(#4C4259));
+  			background-image: -webkit-linear-gradient(top, #333333, #4C4259);
+  			background-image: -o-linear-gradient(top, #333333, #4C4259);
+  			background-image: linear-gradient(top, #333333, #4C4259);">
+        <div class="container-fluid">
+          <a class="brand" href="#">Homemade</a>
+          <ul class="nav">
+            <li><a href="/home">Home</a></li>
+            <li><a href="/menu">Menu</a></li>          
+            <li><a href="/shop">Shop</a></li>            
+          </ul>
+          <ul class="nav pull-right">
+            <li>
+             <a href="/shop/basket">Basket</a>
+            </li>
+            <li class="divider-vertical"></li>            
+          {%if user %}
+         	{%if user.is_authenticated %}
+           	 <li><a href="#">Logged in as {{user}}</a></li>
+           	 <li class="divider-vertical"></li>
+           	 <li><a href="./logout">Log out</a></li>
+          	{%else%}
+          	<li><a href="./login">Sign up | Log in</a></li>
+          	{%endif%} 
+          {%endif%}
+          </ul>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="container-fluid">
+	
+		<div class="content">
+
+		<div id="homepage" align="left">
+		{%block homepage%}
+		{% endblock %}
+		</div>
+		
+		<div id="home" align="left">
+		{%block home%}
+		{% endblock %}
+		</div>
+		
+		<div id="item" align="left">
+		{%block item%}
+		{% endblock %}
+		</div>
+		
+      
+		<div id="basket" align="left">
+		{%block basket%}
+		{% endblock %}
+		</div>
+		
+		<div id="news" align="left">
+		{%block news%}
+		{% endblock %}
+		</div>
+		
+		<div id="logoutBlock" align="left">
+		{%block logoutBlock%}
+		{% endblock %}
+		</div>
+		
+		
+        <footer align="center">
+           <a rel='twipsy' title='Homemade' href="http://www.homemadecafe.com">
+            <img src="{{STATIC_URL}}images/homemade_logo.gif" alt="Homemade Cafe"/>
+            </a>
+           <p><small>&copy; 2012.</small> 
+          </p>
+        </footer>
+      </div>
+	</div>
+	
+	
+
+
+
+</body>
+</html>
