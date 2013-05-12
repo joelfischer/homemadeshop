@@ -1,0 +1,14 @@
+{%if slider_images%}
+<div class="flex-container">
+<div id="slider" class="flexslider" align="center">
+  <ul class="slides">
+  {%for p in slider_images%}
+    <li>
+      <img src="{{MEDIA_URL}}{{p.image}}" height="50" alt="{{p.alt}}" />
+      <!--<p class="flex-caption">{{p.caption}}</p>-->
+    </li>
+  {%endfor%}
+  </ul>
+</div>
+</div>
+{%endif%}

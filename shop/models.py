@@ -31,12 +31,42 @@ class News(models.Model):
     pub_date = models.DateTimeField('date added', blank=True)
     def __unicode__(self):
         return self.link
-
-class Site(models.Model):
-    title = models.CharField(max_length=200)
+    
+class Site(models.Model):    
+    TITLE_CHOICES = (
+                    (u'START',u'START'),
+                    (u'HOME',u'HOME'),
+                    (u'MENU',u'MENU'),
+                    (u'WEDDINGS',u'WEDDINGS'),
+                    (u'PARTIES',u'PARTIES'),
+                    (u'CAKES',u'CAKES'),
+                    (u'GALLERY',u'GALLERY'),
+                    (u'EVENTS',u'EVENTS'),
+                    (u'CHRISTMAS',u'CHRISTMAS'),
+                    (u'SUPPLIERS',u'SUPPLIERS'),
+                    (u'FIND_US',u'FIND US'), 
+                    (u'JOBS',u'JOBS'),
+                    (u'CONTACT_US',u'CONTACT US'),
+                    (u'FRIENDS',u'FRIENDS'),
+                    (u'BLOG',u'BLOG'),
+                     )
+    title = models.CharField(max_length=20, choices=TITLE_CHOICES)
     heading = models.CharField(max_length=200)
     def __unicode__(self):
         return self.title
+    
+class Layout(models.Model):
+    site = models.OneToOneField(Site)
+    TYPE_CHOICES = (
+                    (u'1COL',u'1 Column'),
+                    (u'2COL',u'2 Columns'),
+                    (u'3COL',u'3 Columns'),
+                    (u'2ROW',u'2 Rows'),
+                    (u'3ROW',u'2 Rows'),
+                    )
+    type = models.CharField(max_length=4,choices=TYPE_CHOICES)
+    def __unicode__(self):
+        return self.type
     
 class Paragraph(models.Model):
     site = models.ForeignKey(Site)
@@ -51,5 +81,26 @@ class Image(models.Model):
     alt = models.CharField(max_length=200)
     caption = models.CharField(max_length=200, blank = True)
     def __unicode__(self):
-        return self.image
+        return self.image.name
+
+class ImageSlider(models.Model):
+    name = models.CharField(max_length=20)
+    def __unicode__(self):
+        return self.name
+
+class SliderImage(models.Model):
+    slider = models.ForeignKey(ImageSlider)
+    image = models.ImageField(upload_to='item_images/%Y/%m')
+    alt = models.CharField(max_length=200)
+    caption = models.CharField(max_length=200, blank = True)
+    def __unicode__(self):
+        return self.image.name
+     
+    
+
+    
+    
+    
+
+
     

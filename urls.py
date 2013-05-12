@@ -7,6 +7,7 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     url(r'^home/$', 'shop.views.index'),
+    url(r'^menu/$', 'shop.views.site', {'site': 'MENU'}),
     url(r'^shop/$', 'shop.views.shop'),
     url(r'^shop/item/(?P<item_id>\d+)/$', 'shop.views.detail'),
     url(r'^shop/basket/(?P<basket_id>\d+)/$', 'shop.views.basket'),
@@ -23,5 +24,5 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
     url(r'^shop/admin/', include(admin.site.urls)),
-    url(r'^$', 'shop.views.index'),
+    url(r'^$', 'shop.views.site', {'site': 'START'}),
 )

@@ -7,10 +7,24 @@
 
 <!-- <link rel="stylesheet" href="http://wwwdev.mrl.nott.ac.uk/jef/homemade/css/bootstrap.css"> -->
 <link rel="stylesheet" href="{{STATIC_URL}}css/bootstrap.css">
+<link rel="stylesheet" href="{{STATIC_URL}}css/flexslider.css" type="text/css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+<script src="{{STATIC_URL}}js/jquery/jquery.flexslider.js"></script>
 <style type="text/css">
  body {
        background-color: #4C4259;
+ /*      font-family: "Lucida Sans Unicode", lucida,sans-serif; */
+       color: #ddd;
   }
+  
+  h1, h2, h3, h4, h5, h6, p {
+/*	  	font-family: "Lucida Sans Unicode", lucida,sans-serif; */
+  		color: #ddd;
+  }
+
+.hero-unit {
+ 	   background-color: #4C4259;
+}
   
   
  <!-- POLAROID STYLE IMAGES, CREDIT TO http://www.zurb.com/playground/css3-polaroids --> 
@@ -34,7 +48,37 @@
  ul.polaroids li.messy a { margin-top: -375px; margin-left: 160px; -webkit-transform: rotate(-5deg); -moz-transform: rotate(-5deg); }
  ul.polaroids li.reg a:hover { -webkit-transform: scale(1.25); -moz-transform: scale(1.25); -webkit-box-shadow: 0 3px 6px rgba(0,0,0,.5); -moz-box-shadow: 0 3px 6px rgba(0,0,0,.5); position: relative; z-index: 5; }
 
+.nav-tabs > .active > a, .nav-tabs > .active > a:hover {
+  color: #fff;
+  background-color: #4C4259;
+  border: 1px solid #ddd;
+  border-bottom-color: transparent;
+}
+
+.nav-tabs > li > a {
+  color: #333333;
+  border: 1px solid #ddd;
+  border-bottom-color: transparent;
+}
+
+.nav-tabs > li > a:hover {
+  background-color: #4C4259;
+  color: #999999;
+  border: 1px solid #ddd;
+  border-bottom-color: transparent;
+}
+
+
 </style>
+
+<script type="text/javascript" charset="utf-8">
+  $(window).load(function() {
+    $('.flexslider').flexslider({
+    	slideshow: true,
+		animationLoop: true,
+    });	
+  });
+</script>
 
 <script type="text/javascript">
 function addItemCount() {
@@ -49,41 +93,14 @@ function addItemCount() {
 
 </head>
 <body>
-    <div class="navbar navbar-fixed-top">
-      <div class="navbar-inner" 
-      	style="
-      		background-color: #4C4259;
-    		background-image: -moz-linear-gradient(center top , #333333, #4C4259);
-    		background-image: -ms-linear-gradient(top, #333333, #4C4259);
-  			background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#333333), to(#4C4259));
-  			background-image: -webkit-linear-gradient(top, #333333, #4C4259);
-  			background-image: -o-linear-gradient(top, #333333, #4C4259);
-  			background-image: linear-gradient(top, #333333, #4C4259);">
-        <div class="container-fluid">
-          <a class="brand" href="#">Homemade</a>
-          <ul class="nav">
-            <li><a href="/home">Home</a></li>
-            <li><a href="/menu">Menu</a></li>          
-            <li><a href="/shop">Shop</a></li>            
-          </ul>
-          <ul class="nav pull-right">
-            <li>
-             <a href="/shop/basket">Basket</a>
-            </li>
-            <li class="divider-vertical"></li>            
-          {%if user %}
-         	{%if user.is_authenticated %}
-           	 <li><a href="#">Logged in as {{user}}</a></li>
-           	 <li class="divider-vertical"></li>
-           	 <li><a href="./logout">Log out</a></li>
-          	{%else%}
-          	<li><a href="./login">Sign up | Log in</a></li>
-          	{%endif%} 
-          {%endif%}
-          </ul>
-        </div>
-      </div>
-    </div>
+	
+	{%block nav_tabs%}
+	{%endblock%}
+	
+	<img src="{{STATIC_URL}}images/homemade_logo_narrow.gif" alt="Homemade Cafe"/>
+	
+	{%block section_base%}
+	{%endblock%}
 
 
     <div class="container-fluid">

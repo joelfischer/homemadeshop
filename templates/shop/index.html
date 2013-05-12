@@ -1,15 +1,10 @@
-{% extends "shop/base.html" %}
+{% extends "shop/hockley_base.html" %}
 
 {% block title %}
 <title>Homemade</title>
 {% endblock %}
 
 {%block home %}
-
-<ul class="breadcrumb" align="left">
- <li class="active">Home</li>
- </ul>
-
 <div class="hero-unit" align="left">
 
  <div class="page-header">
@@ -37,6 +32,9 @@
   <p>
   <img src="{{STATIC_URL}}images/Black_Board_main.png" alt="Opening times"/>
   </p>
+  
+  {% include "shop/flexslider.html" %}
+
  </div>
 
 {% include "shop/news.html" %}

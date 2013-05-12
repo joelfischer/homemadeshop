@@ -1,0 +1,63 @@
+{% extends "shop/base.html" %}
+
+{% block title %}
+<title>Homemade</title>
+{% endblock %}
+
+{%block nav_tabs%}
+<ul class="nav nav-tabs"
+	style="
+	background-color: #F5F5F5;
+	">
+  <li><a href="/home">Hockley</a></li>
+  <li><a href="/sherwood">Sherwood</a></li>
+  <li><a href="/catering">Catering</a></li>
+  <li><a href="/blog">Blog</a></li>
+</ul>
+{%endblock%}
+
+{%block home %}
+
+<div class="hero-unit" align="left">
+
+ 
+<div class="page-header">
+ {%if page%}
+  <h1>{{page.heading}}</h1>
+ </div>
+
+ 
+ <div class="row-fluid">
+ 
+ {%for i in paras_images%}
+ <div class="span3">
+ {%for item in i%}
+ {%if item.image%}
+ {%if not item.image|length_is:"0" %}
+ <div>
+ <ul class="polaroids">
+ <li class="reg"><a title="{{item.caption}}" href="{{item.alt}}"><img src="{{MEDIA_URL}}{{item.image}}"/></a></li>
+ </div>
+ {%endif%}
+ {%endif%}	
+ {%if item.heading%}
+  <h2>{{item.heading}}</h2>
+  {%endif%}
+   {%if item.content%}
+  <p>
+  {{item.content}}
+  </p>
+ {%endif%}
+ {%endfor%}
+ </div>
+ {%endfor%}
+  
+  {%endif%}
+  
+
+{% include "shop/news.html" %}
+
+ </div>
+</div>
+
+ {% endblock %}
