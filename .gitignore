@@ -6,3 +6,4 @@ media
 *.log
 *.db
 *.sqlite
+settings.py
