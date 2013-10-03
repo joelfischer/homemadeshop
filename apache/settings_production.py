@@ -108,10 +108,10 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    '/var/www/homemade/homemadeshop/shop/templates',
+    '/var/www/homemade/homemadeshop/templates',
     '/usr/local/lib/python2.7/dist-packages/django/contrib/admin/templates',
-    '/var/www/homemade/homemadeshop/shop/templates/shop',
-    '/var/www/homemade/homemadeshop/shop/templates/admin',
+    '/var/www/homemade/homemadeshop/templates/shop',
+    '/var/www/homemade/homemadeshop/templates/admin',
     #'/var/www/foody/food_diary/diary/templates/admin',
 )
 
