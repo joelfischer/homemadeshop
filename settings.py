@@ -2,6 +2,8 @@
 import os
 #ROOT_PATH = os.path.dirname(__file__)
 ROOT_PATH = '/Users/jef/Dev/homemadeshop'
+gettext = lambda s: s
+PROJECT_PATH = os.path.abspath(os.path.dirname(__file__))
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -35,6 +37,9 @@ TIME_ZONE = 'Europe/London'
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
 LANGUAGE_CODE = 'en-uk'
+
+LANGUAGES = [('en', 'en')]
+DEFAULT_LANGUAGE = 0
 
 SITE_ID = 1
 
@@ -103,6 +108,8 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.auth.context_processors.auth',
     'django.contrib.messages.context_processors.messages',
     'django.core.context_processors.request',
+#    'cms.context_processors.media',
+#    'sekizai.context_processors.sekizai',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -111,6 +118,9 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+#    'cms.middleware.page.CurrentPageMiddleware',
+#    'cms.middleware.user.CurrentUserMiddleware',
+#    'cms.middleware.toolbar.ToolbarMiddleware',
 )
 
 ROOT_URLCONF = 'homemadeshop.urls'
@@ -119,7 +129,14 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    os.path.join(ROOT_PATH, 'templates')
+    os.path.join(ROOT_PATH, 'templates'),
+    os.path.join(ROOT_PATH, 'templates/blog'),
+    os.path.join(ROOT_PATH, 'templates/shop'),
+#    os.path.join(PROJECT_PATH, 'homemadeshop/templates/blog'),
+)
+
+CMS_TEMPLATES = (
+    ('template_1.html', 'Example Template'),
 )
 
 INSTALLED_APPS = (
@@ -134,6 +151,17 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
+#    'cms',
+#    'menus',
+#    'mptt',
+#    'south',
+#    'cms.plugins.text',
+#    'cms.plugins.picture',
+#    'cms.plugins.link',
+#    'cms.plugins.file',
+#    'cms.plugins.snippet',
+#    'cms.plugins.googlemap',
+#    'sekizai',
 )
 
 # A sample logging configuration. The only tangible logging

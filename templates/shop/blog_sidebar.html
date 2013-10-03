@@ -1,0 +1,44 @@
+<div class="span3">
+ 
+ {% if news %}
+ <div class="page-header">
+ <h3>News</h3>
+ </div>
+
+ 
+  <div class="row-fluid">  
+    {% for item in news %}
+
+      <h4>{{ item.title }} <small>Added {{item.pub_date|date:"d M Y"}}</small></h4>
+
+      {%for p in item.paras%}
+      	{{p|truncatewords:30}}... <a href="/blog/#{{item.id}}">read more.</a>
+      {%endfor%}
+      </br>
+      </br>
+      {%for image in item.images%}
+      {%if image.image != "" %}
+      <img src="{{MEDIA_URL}}{{image.image}}" alt="{{image.alt}}" width="200"/>
+      {%endif%}
+      {%endfor%}
+      
+  {%if item.links%}
+  <ul>
+   {%for l in item.links%}
+   <li><a href="{{l}}">{{l}}</a></li>
+   {%endfor%}
+  </ul>
+  <div class="page-header">
+  </div>
+
+  
+  
+  {%endif%}  
+    {% endfor %}
+    {% else %}
+
+  	  <p>Currently no news.</p>
+    {% endif %}
+
+ </div>
+ 

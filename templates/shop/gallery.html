@@ -1,0 +1,48 @@
+{% extends "shop/hockley_base.html" %}
+
+{% block title %}
+<title>Homemade Gallery</title>
+{% endblock %}
+
+{%block home %}
+
+<div class="hero-unit" align="left">
+
+ <div class="page-header">
+  {%if page%}
+  	<h1>{{page.heading}}</h1>
+  {%endif%} 
+ </div>
+
+ <div class="row-fluid">
+ 
+ <div class="span9">
+ {% if images %}
+ {%for para in paras%}
+  		{%if para.heading%}
+  		<h2>{{para.heading}}</h2>
+  		{%endif%}
+  	<p>
+  	{{para.content}}
+  	</p>
+  {%endfor%}
+
+   <ul class="polaroids">
+    {% for image in images %}
+    <li class="reg">
+     <a href="/gallery/item/{{ image.id }}/" title="{{image.caption}}"><img src="{{MEDIA_URL}}{{image.image}}" alt="{{image.caption}}"/></a>
+    </li>	
+    {% endfor %}
+   </ul>
+  </p>
+ {% else %}
+  <p>No items are available.</p>
+ {% endif %}
+ </div>
+
+{% include "shop/blog_sidebar.html" %}
+
+ </div>
+</div>
+
+ {% endblock %}

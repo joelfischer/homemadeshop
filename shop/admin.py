@@ -1,9 +1,6 @@
-from shop.models import Item, News, Site, Paragraph, models, Image, Layout, ImageSlider, SliderImage
+from shop.models import Page, Paragraph, Blog_Paragraph, models, Image, Blog_Image, Blog_Link, ImageSlider, SliderImage, Cake, Blogpost
 from django.contrib import admin
 from django.forms import TextInput, Textarea
-
-class LayoutInline(admin.StackedInline):
-    model = Layout
 
 class ParaInline(admin.StackedInline):
     model = Paragraph
@@ -16,6 +13,18 @@ class ImageInline(admin.StackedInline):
 class SliderImageInline(admin.StackedInline):
     model = SliderImage
     extra = 1
+    
+class BlogParaInline(admin.StackedInline):
+    model = Blog_Paragraph
+    extra = 1
+    
+class BlogImageInline(admin.StackedInline):
+    model = Blog_Image
+    extra = 1 
+
+class BlogLinkInline(admin.StackedInline):
+    model = Blog_Link
+    extra = 1 
 
 class HomemadeAdmin(admin.ModelAdmin):
     formfield_overrides = {
@@ -26,13 +35,26 @@ class HomemadeAdmin(admin.ModelAdmin):
         (None,      {'fields': ['title']}),
         ('Heading', {'fields': ['heading']}),
     ]
-    inlines = [LayoutInline,ParaInline,ImageInline]
+    inlines = [ParaInline,ImageInline]
     
 class SliderAdmin(admin.ModelAdmin):
     inlines = [SliderImageInline]
+    
+class BlogAdmin(admin.ModelAdmin):
+    formfield_overrides = {
+        models.CharField: {'widget': TextInput(attrs={'size':'50'})},
+        models.TextField: {'widget': Textarea(attrs={'rows':20, 'cols':60})},
+    }
+    fieldsets = [
+        (None,      {'fields': ['title']}),
+        ('Show in news side bar (short preview)?',      {'fields': ['news_item']}),
+        (None,      {'fields': ['pub_date']}),
+    ]
+    inlines = [BlogParaInline,BlogImageInline,BlogLinkInline]
 
-admin.site.register(Site, HomemadeAdmin)
-admin.site.register(Item)
-admin.site.register(News)
+admin.site.register(Page, HomemadeAdmin)
+admin.site.register(Cake)
+admin.site.register(Image)
+admin.site.register(Blogpost, BlogAdmin)
 admin.site.register(ImageSlider, SliderAdmin)
 
