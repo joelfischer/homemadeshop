@@ -6,7 +6,7 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    url(r'^home/$', 'shop.views.index'),
+    url(r'^homemade/home/$', 'shop.views.index'),
     url(r'^hockley/$', 'shop.views.index'),
     url(r'^menu/$', 'shop.views.site', {'site': 'MENU'}),
 #    url(r'^shop/$', 'shop.views.shop'),
