@@ -12,8 +12,6 @@ ADMINS = (
      ('jef', 'jef@cs.nott.ac.uk'),
 )
 
-BASE_URL = 'http://localhost:8000/'
-
 MANAGERS = ADMINS
 
 DATABASES = {
