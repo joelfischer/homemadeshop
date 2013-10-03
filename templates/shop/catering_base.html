@@ -5,10 +5,10 @@
 	style="
 	background-color: #F5F5F5;
 	">
-  <li><a href="{{ROOT_URL}}home">Hockley</a></li>
-  <li><a href="{{ROOT_URL}}sherwood">Sherwood</a></li>
-  <li class="active"><a href="{{ROOT_URL}}catering">Catering</a></li>
-  <li><a href="{{ROOT_URL}}blog">Blog</a></li>
+  <li><a href="/home">Hockley</a></li>
+  <li><a href="/sherwood">Sherwood</a></li>
+  <li class="active"><a href="/catering">Catering</a></li>
+  <li><a href="/blog">Blog</a></li>
 </ul>
 {%endblock%}
 
@@ -27,9 +27,9 @@
         <div class="container-fluid">
           <a class="brand" href="/catering">Home</a>
           <ul class="nav">
-            <li><a href="{{ROOT_URL}}weddings">Weddings</a></li> 
-            <li><a href="{{ROOT_URL}}parties">Parties</a></li>          
-            <li><a href="{{ROOT_URL}}events">Events</a></li> 
+            <li><a href="/weddings">Weddings</a></li> 
+            <li><a href="/parties">Parties</a></li>          
+            <li><a href="/events">Events</a></li> 
           </ul>
           <ul class="nav pull-right">
             <li class="divider-vertical"></li>            
@@ -37,9 +37,9 @@
          	{%if user.is_authenticated %}
            	 <li><a href="#">Logged in as {{user}}</a></li>
            	 <li class="divider-vertical"></li>
-           	 <li><a href="{{ROOT_URL}}logout">Log out</a></li>
+           	 <li><a href="/logout">Log out</a></li>
           	{%else%}
-          	<li><a href="{{ROOT_URL}}login">Sign up | Log in</a></li>
+          	<li><a href="/login">Sign up | Log in</a></li>
           	{%endif%} 
           {%endif%}
           </ul>

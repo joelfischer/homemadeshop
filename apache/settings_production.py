@@ -9,8 +9,6 @@ ADMINS = (
      ('jef', 'jef@cs.nott.ac.uk'),
 )
 
-BASE_URL = 'http://fischaa1.miniserver.com/homemade/'
-
 MANAGERS = ADMINS
 
 DATABASES = {
