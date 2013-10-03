@@ -1,7 +1,7 @@
 # Django settings for cargo project.
 import os
 
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = True
 ROOT_PATH = os.path.dirname(__file__)
 
