@@ -22,6 +22,12 @@ DATABASES = {
     }
 }
 
+# for send_mail
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+DEFAULT_FROM_EMAIL = "info@homemadecafe.com" 
+SERVER_EMAIL = "info@homemadecafe.com" 
+
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
 # although not all choices may be available on all operating systems.
