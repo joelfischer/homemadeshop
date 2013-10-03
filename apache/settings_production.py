@@ -1,7 +1,7 @@
 # Django settings for cargo project.
 import os
 
-DEBUG = False
+DEBUG = True
 TEMPLATE_DEBUG = True
 ROOT_PATH = os.path.dirname(__file__)
 
@@ -64,6 +64,16 @@ STATIC_ROOT = '/home/jef/homemade/static/' #'/home/nuwan/food/bootstrap/' #
 # Example: "http://media.lawrence.com/static/"
 STATIC_URL = '/static/'
 
+TEMPLATE_CONTEXT_PROCESSORS = (
+    "django.contrib.auth.context_processors.auth",
+    "django.core.context_processors.debug",
+    "django.core.context_processors.i18n",
+    "django.core.context_processors.media",
+    "django.core.context_processors.static",
+    "django.core.context_processors.tz",
+    "django.contrib.messages.context_processors.messages"
+)
+
 # URL prefix for admin static files -- CSS, JavaScript and images.
 # Make sure to use a trailing slash.
 # Examples: "http://foo.com/static/admin/", "/static/admin/".
@@ -113,16 +123,6 @@ TEMPLATE_DIRS = (
     '/var/www/homemade/homemadeshop/templates/shop',
     '/var/www/homemade/homemadeshop/templates/admin',
     #'/var/www/foody/food_diary/diary/templates/admin',
-)
-
-TEMPLATE_CONTEXT_PROCESSORS = (
-    "django.contrib.auth.context_processors.auth",
-    "django.core.context_processors.debug",
-    "django.core.context_processors.i18n",
-    "django.core.context_processors.media",
-    "django.core.context_processors.static",
-    "django.core.context_processors.tz",
-    "django.contrib.messages.context_processors.messages"
 )
 
 INSTALLED_APPS = (
