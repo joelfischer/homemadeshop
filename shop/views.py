@@ -28,7 +28,7 @@ def contact(request):
             sender = form.cleaned_data['sender']
             cc_myself = form.cleaned_data['cc_myself']
 
-            recipients = ['joel.fischer@nottingham.ac.uk']
+            recipients = ['joelefischer@gmail.com']
             if cc_myself:
                 recipients.append(sender)
                 send_mail(subject, message, sender, recipients)
