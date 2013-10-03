@@ -9,6 +9,8 @@ ADMINS = (
      ('jef', 'jef@cs.nott.ac.uk'),
 )
 
+ROOT_URL = 'http://fischaa1.miniserver.com/homemade'
+
 MANAGERS = ADMINS
 
 DATABASES = {

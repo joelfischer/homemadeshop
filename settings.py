@@ -12,6 +12,8 @@ ADMINS = (
      ('jef', 'jef@cs.nott.ac.uk'),
 )
 
+ROOT_URL = 'http://127.0.0.1:8000/'
+
 MANAGERS = ADMINS
 
 DATABASES = {
