@@ -1,0 +1,8 @@
+media
+*.pyc
+.DS_Store
+.project
+.pydevproject
+*.log
+*.db
+*.sqlite
