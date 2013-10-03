@@ -12,7 +12,7 @@ ADMINS = (
      ('jef', 'jef@cs.nott.ac.uk'),
 )
 
-ROOT_URL = 'http://localhost:8000/'
+BASE_URL = 'http://localhost:8000/'
 
 MANAGERS = ADMINS
 
