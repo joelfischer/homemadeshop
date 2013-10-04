@@ -36,12 +36,12 @@
  {%if not item.image|length_is:"0" %}
  <div>
  <ul class="polaroids">
- <li class="reg"><a title="{{item.caption}}" href="{{item.alt}}"><img src="{{MEDIA_URL}}{{item.image}}"/></a></li>
+ <li class="reg"><a title="{{item.caption}}" href="/{{item.alt}}"><img src="{{MEDIA_URL}}{{item.image}}"/></a></li>
  </div>
  {%endif%}
  {%endif%}	
  {%if item.heading%}
-  <h2>{{item.heading}}</h2>
+  <a href="/{{item.alt}}"><h2>{{item.heading}}</h2></a>
   {%endif%}
    {%if item.content%}
   <p>

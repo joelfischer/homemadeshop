@@ -10,14 +10,10 @@ from django.core.mail import send_mail
 def contact(request):
     page = Page.objects.get(title='CONTACT_US')
     paras = Paragraph.objects.filter(page_id__exact=page.pk)
-#    layout = Layout.objects.filter(site_id__exact=page.pk)
-#    for l in layout:
-#        layout_type = l.type
     images = Image.objects.filter(page_id__exact=page.pk) 
     news = getNews()
     
     if request.method == 'POST': # If the form has been submitted...
-        print 'got it.'
         form = ContactForm(request.POST) # A form bound to the POST data
         if form.is_valid(): # All validation rules pass
             # Process the data in form.cleaned_data
@@ -36,7 +32,6 @@ def contact(request):
             form = ContactForm()
             values = {'page': page, 'paras':paras, 'images':images, 'news': news, 'form': form, 'success': True}
             return render_to_response('shop/contact.html', values, context_instance=RequestContext(request))
-#            return HttpResponseRedirect('/thanks/') # Redirect after POST
     else:
         form = ContactForm() # An unbound form
     values = {'page': page, 'paras':paras, 'images':images, 'news': news, 'form': form}
@@ -55,9 +50,10 @@ def start(request):
 def getNews():
     posts = Blogpost.objects.all().filter(news_item=True).order_by('pub_date')
     for p in posts:
-        p.images = Blog_Image.objects.filter(blog_id__exact=p.pk)[:1]
-        p.links = Blog_Link.objects.filter(blog_id__exact=p.pk)[:1]
-        p.paras = Blog_Paragraph.objects.filter(blog_id__exact=p.pk)[:1]
+        if p.news_item == True: 
+            p.images = Blog_Image.objects.filter(blog_id__exact=p.pk)[:1]
+            p.links = Blog_Link.objects.filter(blog_id__exact=p.pk)[:1]
+            p.paras = Blog_Paragraph.objects.filter(blog_id__exact=p.pk)[:1]
     return posts
 
 def blog(request):
