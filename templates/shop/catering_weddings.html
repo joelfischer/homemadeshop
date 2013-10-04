@@ -30,16 +30,14 @@
  </div>
  
  <div class="span4"> 
-  {%for i in paras_images%}
- {%for item in i%}
- {%if item.image%}
- {%if not item.image|length_is:"0" %}
+  {%for i in images%}
+ {%if i.image%}
+ {%if not i.image|length_is:"0" %}
  <ul class="polaroids">
- <li class="reg"><a title="{{item.caption}}"><img src="{{MEDIA_URL}}{{item.image}}" alt="{{item.alt}}"/></a></li>
+ <li class="reg"><a title="{{i.caption}}"><img src="{{MEDIA_URL}}{{i.image}}" alt="{{i.alt}}"/></a></li>
  </ul>
  {%endif%}
  {%endif%}	
- {%endfor%}
  {%endfor%}
  </div>
 
