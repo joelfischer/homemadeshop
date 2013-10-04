@@ -6,4 +6,4 @@ media
 *.log
 *.db
 *.sqlite
-settings.py
+email_settings.py
