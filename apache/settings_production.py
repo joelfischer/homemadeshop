@@ -22,8 +22,8 @@ DATABASES = {
     }
 }
 
-# for send_mail
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# for send_mail (DEBUG MODE)
+#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 DEFAULT_FROM_EMAIL = "info@homemadecafe.com" 
 SERVER_EMAIL = "info@homemadecafe.com" 

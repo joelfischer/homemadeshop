@@ -1,7 +1,7 @@
 # Django settings for homemadeshop project.
-import os
+import os, socket
 #ROOT_PATH = os.path.dirname(__file__)
-ROOT_PATH = '/Users/jef/Dev/homemadeshop'
+ROOT_PATH = os.path.dirname(__file__)
 gettext = lambda s: s
 PROJECT_PATH = os.path.abspath(os.path.dirname(__file__))
 
@@ -14,17 +14,42 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': '/Users/jef/Dev/homemadeshop/db/sqlite.db',                      # Or path to database file if using sqlite3.
-        'USER': '',                      # Not used with sqlite3.
-        'PASSWORD': '',                  # Not used with sqlite3.
-        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
-    }
-}
+devHosts = ['Sartre.local']
+hostname = socket.gethostname()
 
+HOSTING = 'DEV'
+if hostname not in devHosts:
+    HOSTING = 'PROD'
+else:
+    HOSTING = 'DEV'
+
+if HOSTING =='DEV':
+    DATABASES = {
+                 'default': {
+                             'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+                             'NAME': '/Users/jef/Dev/homemadeshop/db/sqlite.db',                      # Or path to database file if using sqlite3.
+                             'USER': '',                      # Not used with sqlite3.
+                             'PASSWORD': '',                  # Not used with sqlite3.
+                             'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
+                             'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+                             }
+                 }
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+    
+else:
+    DATABASES = {
+                 'default': {
+                             'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+                             'NAME': 'homemadeshop_db',                       # Or path to database file if using sqlite3.
+                             'USER': 'homemade',                      # Not used with sqlite3.
+                             'PASSWORD': 'h0mem4de!',                  # Not used with sqlite3.
+                             'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
+                             'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+                             }
+                 }
+    import email_settings 
+      
+    
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
 # although not all choices may be available on all operating systems.
@@ -123,9 +148,9 @@ MIDDLEWARE_CLASSES = (
 #    'cms.middleware.toolbar.ToolbarMiddleware',
 )
 
-ROOT_URLCONF = 'homemadeshop.urls'
-
-TEMPLATE_DIRS = (
+if HOSTING=='DEV':
+    ROOT_URLCONF = 'homemadeshop.urls'
+    TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -134,9 +159,17 @@ TEMPLATE_DIRS = (
     os.path.join(ROOT_PATH, 'templates/shop'),
 #    os.path.join(PROJECT_PATH, 'homemadeshop/templates/blog'),
 )
-
-CMS_TEMPLATES = (
-    ('template_1.html', 'Example Template'),
+else:
+    ROOT_URLCONF = 'homemadeshop.apache.urls_production'
+    TEMPLATE_DIRS = (
+    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
+    # Always use forward slashes, even on Windows.
+    # Don't forget to use absolute paths, not relative paths.
+    '/var/www/homemade/homemadeshop/templates',
+    '/usr/local/lib/python2.7/dist-packages/django/contrib/admin/templates',
+    '/var/www/homemade/homemadeshop/templates/shop',
+    '/var/www/homemade/homemadeshop/templates/admin',
+    #'/var/www/foody/food_diary/diary/templates/admin',
 )
 
 INSTALLED_APPS = (

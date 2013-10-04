@@ -26,7 +26,7 @@ def contact(request):
             subject = form.cleaned_data['subject']
             message = form.cleaned_data['message']
             sender = form.cleaned_data['sender']
-            message = 'From'+name+ '\n Email: '+sender+ '\n Phone number: '+phone_number + '\n Message: '+message
+            message = 'From: '+name+ '\n Email: '+sender+ '\n Phone number: '+phone_number + '\n Message: '+message
             cc_myself = form.cleaned_data['cc_myself']
 
             recipients = ['joelefischer@gmail.com']

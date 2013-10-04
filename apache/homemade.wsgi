@@ -10,7 +10,7 @@ path = '/var/www/homemade/homemadeshop'
 if path not in sys.path:
     sys.path.append(path)
 
-os.environ['DJANGO_SETTINGS_MODULE'] = 'homemadeshop.apache.settings_production'
+os.environ['DJANGO_SETTINGS_MODULE'] = 'homemadeshop.settings'
 import django.core.handlers.wsgi
 application = django.core.handlers.wsgi.WSGIHandler()
 
