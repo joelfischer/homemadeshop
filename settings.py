@@ -47,11 +47,11 @@ else:
                              'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
                              }
                  }
-    import email_settings.EMAIL_USE_TLS as EMAIL_USE_TLS
-    import email_settings.EMAIL_HOST as EMAIL_HOST
-    import email_settings.EMAIL_HOST_PASSWORD as EMAIL_HOST_PASSWORD
-    import email_settings.EMAIL_HOST_USER as EMAIL_HOST_USER
-    import email_settings.EMAIL_PORT as EMAIL_PORT
+    import email_settings.EMAIL_USE_TLS 
+    import email_settings.EMAIL_HOST 
+    import email_settings.EMAIL_HOST_PASSWORD 
+    import email_settings.EMAIL_HOST_USER 
+    import email_settings.EMAIL_PORT 
     
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
