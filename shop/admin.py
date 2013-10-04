@@ -29,7 +29,7 @@ class BlogLinkInline(admin.StackedInline):
 class HomemadeAdmin(admin.ModelAdmin):
     formfield_overrides = {
         models.CharField: {'widget': TextInput(attrs={'size':'50'})},
-        models.TextField: {'widget': Textarea(attrs={'rows':20, 'cols':60})},
+        models.TextField: {'widget': Textarea(attrs={'rows':10, 'cols':40})},
     }
     fieldsets = [
         (None,      {'fields': ['title']}),
@@ -43,7 +43,7 @@ class SliderAdmin(admin.ModelAdmin):
 class BlogAdmin(admin.ModelAdmin):
     formfield_overrides = {
         models.CharField: {'widget': TextInput(attrs={'size':'50'})},
-        models.TextField: {'widget': Textarea(attrs={'rows':20, 'cols':60})},
+        models.TextField: {'widget': Textarea(attrs={'rows':10, 'cols':40})},
     }
     fieldsets = [
         (None,      {'fields': ['title']}),

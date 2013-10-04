@@ -13,12 +13,12 @@
 <style type="text/css">
  body {
        background-color: #4C4259;
- /*      font-family: "Lucida Sans Unicode", lucida,sans-serif; */
+      font-family: "Lucida Sans Unicode", lucida,sans-serif;
        color: #ddd;
   }
   
   h1, h2, h3, h4, h5, h6, p {
-/*	  	font-family: "Lucida Sans Unicode", lucida,sans-serif; */
+	  	font-family: "Lucida Sans Unicode", lucida,sans-serif;
   		color: #ddd;
   }
 
@@ -94,6 +94,14 @@ a:hover {
    border-radius: 2px; / or as you wish, if at all */
 }
 
+.flexslider {
+	margin-bottom: 0px;
+	border:none;
+	box-shadow: 0 0px 0px rgba(0,0,0,.2);
+	-webkit-box-shadow: 0 0px 0px rgba(0,0,0,.2); 
+	-moz-box-shadow: 0 0px 0px rgba(0,0,0,.2); -o-box-shadow: 0 0px 0px rgba(0,0,0,.2);
+}
+
 
 </style>
 
@@ -102,6 +110,7 @@ a:hover {
     $('.flexslider').flexslider({
     	slideshow: true,
 		animationLoop: true,
+		controlNav: false,
     });	
   });
 </script>
@@ -197,6 +206,8 @@ function addItemCount() {
             <a title="OFM Runner Up 2012" href="http://www.theguardian.com/lifeandstyle/2012/oct/21/ofm-awards-best-cheap-eats">
             <img width="100" src="{{STATIC_URL}}images/ofm_2012_button_runner_up.jpeg" alt="OFM Runner Up"/>
             </a> -->
+            </br>
+            <span align="right"><a href="/admin">Admin</a></span>
             <p><small>&copy; 2013.</small> 
           </p>
         </footer>

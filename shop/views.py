@@ -67,19 +67,20 @@ def blog(request):
     return render_to_response('shop/blog_home.html', values, context_instance=RequestContext(request))
 
 def index(request):
-    slider_images =  SliderImage.objects.all()
+#    slider_images =  SliderImage.objects.all()
     try:
         page = Page.objects.get(title="HOME")
     except Exception as e:
         print e
     paras = Paragraph.objects.filter(page_id__exact=page.pk)
+    images = Image.objects.all()[:10]
 #    layout = Layout.objects.filter(site_id__exact=page.pk)
     news = getNews()
-    values = {'page': page, 'paras':paras, 'news': news,'slider_images':slider_images}
+    values = {'page': page, 'paras':paras, 'news': news,'slider_images':images}
     return render_to_response('shop/hockley_home.html', values, context_instance=RequestContext(request))
 
 def site(request, site):
-    slider_images =  SliderImage.objects.all()
+#    slider_images =  SliderImage.objects.all()
     page = Page.objects.get(title=site)
     paras = Paragraph.objects.filter(page_id__exact=page.pk)
 #    layout = Layout.objects.filter(site_id__exact=page.pk)
@@ -88,8 +89,7 @@ def site(request, site):
     images = Image.objects.filter(page_id__exact=page.pk) 
     paras_images = zip(images,paras) 
     news = getNews()
-    values = {'page': page, 'paras_images': paras_images, 'paras':paras, 'images':images, 
-              'slider_images':slider_images,'news': news}
+    values = {'page': page, 'paras_images': paras_images, 'paras':paras, 'images':images, 'news': news}
     if site=='START':
         return render_to_response('shop/start_3COL.html', values, context_instance=RequestContext(request))
     if site=='MENU':
