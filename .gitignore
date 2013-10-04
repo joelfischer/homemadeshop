@@ -1,4 +1,5 @@
-
+media
+db
 *.pyc
 .DS_Store
 .project
