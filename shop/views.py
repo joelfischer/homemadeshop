@@ -110,6 +110,8 @@ def site(request, site):
         return render_to_response('shop/2COL.html', values, context_instance=RequestContext(request))
     elif site=='FIND_US':
         return render_to_response('shop/find_us.html', values, context_instance=RequestContext(request))
+    elif site=='SHERWOOD_FIND_US':
+        return render_to_response('shop/sherwood_find_us.html', values, context_instance=RequestContext(request))
     elif site=='SUPPLIERS':
         return render_to_response('shop/2COL.html', values, context_instance=RequestContext(request))
     elif site=='FRIENDS':

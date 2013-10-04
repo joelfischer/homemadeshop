@@ -67,6 +67,7 @@ class Page(models.Model):
                     (u'BLOG',u'BLOG'),
                     (u'SHERWOOD_HOME',u'SHERWOOD HOME'),
                     (u'SHERWOOD_MENU',u'SHERWOOD MENU'),
+                    (u'SHERWOOD_FIND_US',u'SHERWOOD FIND US'),
                     (u'CATERING_HOME',u'CATERING HOME'),
                     (u'WEDDINGS',u'WEDDINGS'),
                      )
