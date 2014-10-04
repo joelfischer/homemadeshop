@@ -2,7 +2,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response, render
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
-from shop.models import Page, Paragraph, Blog_Paragraph, Image, Blog_Image, Blog_Link, SliderImage, Cake, Blogpost, ContactForm
+from shop.models import Page, Paragraph, Blog_Paragraph, Image, Blog_Image, Blog_Link, SliderImage, Cake, Blogpost, ContactForm, Pdf
 from django.http import Http404
 from django.template import RequestContext
 from django.core.mail import send_mail
@@ -89,7 +89,8 @@ def site(request, site):
     images = Image.objects.filter(page_id__exact=page.pk) 
     paras_images = zip(images,paras) 
     news = getNews()
-    values = {'page': page, 'paras_images': paras_images, 'paras':paras, 'images':images, 'news': news}
+    pdfs = Pdf.objects.filter(page_id__exact=page.pk) 
+    values = {'page': page, 'paras_images': paras_images, 'paras':paras, 'images':images, 'news': news, 'pdfs':pdfs}
     if site=='START':
         return render_to_response('shop/start_3COL.html', values, context_instance=RequestContext(request))
     if site=='MENU':
@@ -116,12 +117,13 @@ def site(request, site):
         return render_to_response('shop/2COL.html', values, context_instance=RequestContext(request))
     elif site=='FRIENDS':
         return render_to_response('shop/2COL.html', values, context_instance=RequestContext(request))
+    elif site=='PAVILION_HOME':
+        return render_to_response('shop/pavilion_home.html', values, context_instance=RequestContext(request))
     else:
         return render_to_response('shop/start_3COL.html', values, context_instance=RequestContext(request))
     
 def gallery(request, site):
     page = Page.objects.get(title=site)
-    print page
     paras = Paragraph.objects.filter(page_id__exact=page.pk)
     news = getNews()
     if site == 'CAKES':
@@ -133,6 +135,23 @@ def gallery(request, site):
 #        images = Image.objects.all().filter(site_id__exact=page.pk)
         values = {'images': images, 'news': news, 'page': page, 'paras':paras}
         return render_to_response('shop/gallery.html', values, context_instance=RequestContext(request))
+    
+#def pdfview(request, site):
+#    page = Page.objects.get(title=site)
+#    paras = Paragraph.objects.filter(page_id__exact=page.pk)
+#    images = Image.objects.filter(page_id__exact=page.pk) 
+#    pdfs = Pdf.objects.filter(page_id__exact=page.pk) 
+#    paras_images = zip(paras,images) 
+#    news = getNews()
+#      
+#    values = {'pdfs': pdfs, 'news': news, 'page': page, 'paras_images':paras_images}
+#    
+#    if site == 'MENU':
+#        return render_to_response('shop/menu.html', values, context_instance=RequestContext(request))
+#    elif site =='SHERWOOD_MENU':
+#        return render_to_response('shop/sherwood_menu.html', values, context_instance=RequestContext(request))
+#    elif site == 'PAVILION_MENU':
+#        return render_to_response('shop/pavilion_menu.html', values, context_instance=RequestContext(request))
 
 def cake_detail(request, item_id):
 #    return HttpResponse("You're looking at item %s." % item_id)

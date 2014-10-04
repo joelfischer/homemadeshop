@@ -18,7 +18,7 @@
  <div class="row-fluid">
  
  {%for i in paras_images%}
- <div class="span3">
+ <div class="span5">
  {%for item in i%}
  {%if item.image%}
  {%if not item.image|length_is:"0" %}
@@ -31,12 +31,28 @@
   <h2>{{item.heading}}</h2>
   {%endif%}
   <p>
-  {{item.content}}
+   {{item.content}}
   </p>
-   </p>
  {%endfor%}
  </div>
  {%endfor%}
+ 
+ <div class ="span4">
+ <p>
+ 	 <ul>
+ {%for m in pdfs%}
+   	{%if m.pdf%}
+  	{%if not m.pdf|length_is:"0" %}
+ 	<li><a title="{{m.title}}" href="{{MEDIA_URL}}{{m.pdf}}">
+ 	 <img src="{{STATIC_URL}}images/PDF-Icon.png" alt="PDF" width="25"/>
+ 	{{m.title}}</a></li>
+ 
+ 	{%endif%}
+ 	{%endif%}
+ {%endfor%}
+ 	</ul>
+ 	 </p>
+</div>
   
   {%endif%}
   

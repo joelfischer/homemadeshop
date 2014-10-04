@@ -70,6 +70,7 @@ class Page(models.Model):
                     (u'SHERWOOD_FIND_US',u'SHERWOOD FIND US'),
                     (u'CATERING_HOME',u'CATERING HOME'),
                     (u'WEDDINGS',u'WEDDINGS'),
+                    (u'PAVILION_HOME',u'PAVILION HOME'),
                      )
     title = models.CharField(max_length=20, choices=TITLE_CHOICES)
     heading = models.CharField(max_length=200)
@@ -103,6 +104,13 @@ class Image(models.Model):
     caption = models.CharField(max_length=200, blank = True)
     def __unicode__(self):
         return self.image.name
+    
+class Pdf(models.Model):
+    page = models.ForeignKey(Page)
+    pdf = models.FileField(upload_to='pdfs/%Y/%m')
+    title = models.CharField(max_length=200, blank=True)
+    def __unicode__(self):
+        return self.pdf.name
 
 class ImageSlider(models.Model):
     name = models.CharField(max_length=20)
@@ -144,6 +152,7 @@ class Blog_Link(models.Model):
     link = models.URLField(blank=True)
     def __unicode__(self):
         return self.link
+    
 
     
     

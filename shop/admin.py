@@ -1,4 +1,4 @@
-from shop.models import Page, Paragraph, Blog_Paragraph, models, Image, Blog_Image, Blog_Link, ImageSlider, SliderImage, Cake, Blogpost
+from shop.models import Page, Paragraph, Blog_Paragraph, models, Image, Blog_Image, Blog_Link, ImageSlider, SliderImage, Cake, Blogpost, Pdf
 from django.contrib import admin
 from django.forms import TextInput, Textarea
 
@@ -9,6 +9,10 @@ class ParaInline(admin.StackedInline):
 class ImageInline(admin.StackedInline):
     model = Image
     extra = 1 
+    
+class PdfInline(admin.StackedInline):
+    model = Pdf
+    extra = 1
     
 class SliderImageInline(admin.StackedInline):
     model = SliderImage
@@ -35,7 +39,7 @@ class HomemadeAdmin(admin.ModelAdmin):
         (None,      {'fields': ['title']}),
         ('Heading', {'fields': ['heading']}),
     ]
-    inlines = [ParaInline,ImageInline]
+    inlines = [ParaInline,ImageInline,PdfInline]
     
 class SliderAdmin(admin.ModelAdmin):
     inlines = [SliderImageInline]

@@ -1,18 +1,16 @@
 {% extends "shop/base.html" %}
 
 {%block nav_tabs%}
-<div class="tabbable">
 <ul class="nav nav-tabs"
 	style="
 	background-color: #F5F5F5;
 	">
-  <li class="active"><a href="/home">Hockley</a></li>
+  <li><a href="/home">Hockley</a></li>
   <li><a href="/sherwood">Sherwood</a></li>
-  <li><a href="/pavilion">Pavilion</a></li>
+  <li class="active"><a href="/pavilion">Pavilion</a></li>
   <li><a href="/catering">Catering</a></li>
   <li><a href="/blog">Blog</a></li>
 </ul>
-</div>
 {%endblock%}
 
 
@@ -28,20 +26,12 @@
   			background-image: -o-linear-gradient(top, #4C4259, #4C4259);
   			background-image: linear-gradient(top, #4C4259, #4C4259);">
         <div class="container-fluid">
-          <a class="brand" href="/home">Home</a>
+          <a class="brand" href="/pavilion">Home</a>
           <ul class="nav">
-            <li><a href="/menu">Menu</a></li>  
-            <li><a href="/cakes">Cakes</a></li>    
-            <li><a href="/gallery">Gallery</a></li> 
-            <li><a href="/suppliers">Suppliers</a></li> 
-            <li><a href="/friends">Friends</a></li> 
-            <li><a href="/jobs">Jobs</a></li> 
-            <li><a href="/contact">Contact us</a></li> 
-        	<li><a href="/find_us">Find us</a></li>          
-            <!--<li><a href="/shop">Shop</a></li>-->
+            <li><a href="/pavilion_menu">Menu</a></li>
+            <li><a href="/pavilion_find_us">Find us</a></li>          
           </ul>
           <ul class="nav pull-right">
-<!--            <li><a href="/shop/basket">Basket</a></li> -->
             <li class="divider-vertical"></li>            
           {%if user %}
          	{%if user.is_authenticated %}

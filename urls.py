@@ -34,6 +34,7 @@ urlpatterns = patterns('',
     url(r'^weddings/$', 'shop.views.site', {'site': 'WEDDINGS'}),
     url(r'^parties/$', 'shop.views.site', {'site': 'PARTIES'}),
     url(r'^events/$', 'shop.views.site', {'site': 'EVENTS'}),
+    url(r'^pavilion/$', 'shop.views.site', {'site': 'PAVILION_HOME'}),
 #    # Examples:
 #    url(r'^$', 'homemadeshop.views.home', name='home'),
 #    url(r'^homemadeshop/', include('homemadeshop.foo.urls')),
