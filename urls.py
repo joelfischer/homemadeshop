@@ -14,7 +14,6 @@ urlpatterns = patterns('',
     url(r'^jobs/$', 'shop.views.site', {'site': 'JOBS'}),
     url(r'^friends/$', 'shop.views.site', {'site': 'FRIENDS'}),
     url(r'^find_us/$', 'shop.views.site', {'site': 'FIND_US'}),
-    url(r'^sherwood_find_us/$', 'shop.views.site', {'site': 'SHERWOOD_FIND_US'}),
     url(r'^contact/$', 'shop.views.contact'),
     url(r'^suppliers/$', 'shop.views.site', {'site': 'SUPPLIERS'}),
     url(r'^cakes/$', 'shop.views.gallery', {'site': 'CAKES'}),
@@ -26,9 +25,6 @@ urlpatterns = patterns('',
     url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {
             'document_root': settings.MEDIA_ROOT,
         }),
-    
-    url(r'^sherwood/$', 'shop.views.site', {'site': 'SHERWOOD_HOME'}),
-    url(r'^sherwood_menu/$', 'shop.views.site', {'site': 'SHERWOOD_MENU'}),
     
     url(r'^catering/$', 'shop.views.site', {'site': 'CATERING_HOME'}),
     url(r'^weddings/$', 'shop.views.site', {'site': 'WEDDINGS'}),

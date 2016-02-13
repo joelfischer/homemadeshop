@@ -95,10 +95,6 @@ def site(request, site):
         return render_to_response('shop/start_3COL.html', values, context_instance=RequestContext(request))
     if site=='MENU':
         return render_to_response('shop/menu.html', values, context_instance=RequestContext(request))
-    elif site=='SHERWOOD_HOME':
-        return render_to_response('shop/sherwood_home.html', values, context_instance=RequestContext(request))
-    elif site=='SHERWOOD_MENU':
-        return render_to_response('shop/sherwood_menu.html', values, context_instance=RequestContext(request))
     elif site=='CATERING_HOME':
         return render_to_response('shop/catering_home.html', values, context_instance=RequestContext(request))
     elif site=='WEDDINGS':
@@ -111,8 +107,6 @@ def site(request, site):
         return render_to_response('shop/2COL.html', values, context_instance=RequestContext(request))
     elif site=='FIND_US':
         return render_to_response('shop/find_us.html', values, context_instance=RequestContext(request))
-    elif site=='SHERWOOD_FIND_US':
-        return render_to_response('shop/sherwood_find_us.html', values, context_instance=RequestContext(request))
     elif site=='SUPPLIERS':
         return render_to_response('shop/2COL.html', values, context_instance=RequestContext(request))
     elif site=='FRIENDS':
